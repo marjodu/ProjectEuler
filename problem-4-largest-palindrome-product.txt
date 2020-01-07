@@ -1,0 +1,33 @@
+function largestPalindromeProduct(n) {
+  // Good luck!
+  let palindromes = [];
+  let numbers = [];
+  let toTest;
+
+  // Generate all n digits numbers
+  for (let i = 0; i.toString().length <= n; i++){
+    numbers.push(i);
+  }
+
+  // Do each multiplication possible
+  for (let i = 1; i < numbers.length; i++) {
+    for(let x = 1; x < numbers.length; x++) {
+      toTest = numbers[i] * numbers[x];
+      // Test if is palindrome
+      if ( isPalindrome((toTest).toString()) ){
+        // If it is, add to the results array
+        palindromes.push(toTest);
+      }
+    }
+  }
+  // Return the biggest palindrome
+  return Math.max.apply(null, palindromes);
+}
+
+largestPalindromeProduct(2);
+
+// Function to test if num is a palindrome
+function isPalindrome(num) {
+  let reverseNum = num.split('').reverse().join('');
+  return reverseNum == num;
+}

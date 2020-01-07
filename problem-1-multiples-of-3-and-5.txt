@@ -1,0 +1,16 @@
+function multiplesOf3and5(number) {
+  // Good luck!
+  let i;
+  let multiplesSum = 0;
+
+  for (i = 1; i < number; i++) {
+    if (i % 3 == 0 || i % 5 == 0){
+      console.log(i)
+      multiplesSum += i;
+    }
+  }
+
+  return multiplesSum;
+}
+
+multiplesOf3and5(1000);

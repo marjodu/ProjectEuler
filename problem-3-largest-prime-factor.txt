@@ -1,0 +1,25 @@
+function largestPrimeFactor(number) {
+  // Good luck!
+  let primeFactors = [];
+  let x = 2;
+
+  // Tant que le reste est plus grand que le plus petit premier
+  while (number >= 2) {
+    // Si le reste est divisible par x
+    if (number % x == 0){
+      // On ajoute x aux premiers
+      primeFactors.push(x);
+      // On déduit x
+      number = number / x;
+    } else {
+      x++;
+    }
+  }
+
+
+
+
+  return Math.max.apply(null, primeFactors);
+}
+
+largestPrimeFactor(10);

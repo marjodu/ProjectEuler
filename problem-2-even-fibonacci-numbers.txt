@@ -1,0 +1,22 @@
+function fiboEvenSum(n) {
+  // You can do it!
+
+  let sum = 0; // The sum to return
+  let i; // Iterative number
+  let a = 0; // Fibonacci number 1
+  let b = 1; // Fibonacci number 2
+  let temp; // Temp value
+
+  for (i = 1; i <= n; i++) {
+    temp = a + b;
+    a = b;
+    b = temp;
+
+    b % 2 == 0 ? sum += b : false;
+    console.log(sum);
+  }
+
+  return sum;
+}
+
+fiboEvenSum(10);
