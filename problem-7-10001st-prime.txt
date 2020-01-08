@@ -1,0 +1,51 @@
+function nthPrime(n) {
+  // Good luck!
+
+  //Array qui contiendra la liste des premiers
+  let primes = [];
+
+  // Appel à la fonction de génération n fois
+  let gen = generatePrimes();
+  for(var i = 0; i < n; i ++) {
+      primes.push(gen.next().value);
+  }
+
+  // Sortie du n premier
+  return primes[n-1];
+}
+
+nthPrime(6);
+
+// Fonction de génération
+function* generatePrimes() {
+    const markedNotPrime = {};
+    let valueToCheck = 2;
+
+    // Infinite loop
+    while(true) {
+        // Si la valeur à tester n'est pas dans la liste des non premiers
+        if (!(valueToCheck in markedNotPrime)) {
+            // retourner la valeur à tester comme étant premier + le générateur est mis en pause
+            yield valueToCheck
+            // la valeur à tester au carré est ajoutée à la liste des non premiers
+            markedNotPrime[valueToCheck**2] = [valueToCheck]
+
+        // Si la valeur à tester est dans la liste des non premiers
+        } else {
+            // On conserve une liste des multiples du non premier
+            let primes =markedNotPrime[valueToCheck];
+            primes.forEach(prime=> {
+                let nextMultipleOfPrime = prime + valueToCheck;
+                // On met à jour l'objet en fonction
+                if (nextMultipleOfPrime in markedNotPrime) {
+                    markedNotPrime[nextMultipleOfPrime].push(prime);
+                } else {
+                    markedNotPrime[nextMultipleOfPrime] = [prime];
+                }
+            })
+            // On retire la valeur testée
+            delete markedNotPrime[valueToCheck];
+        }
+        valueToCheck += 1
+    }
+}
