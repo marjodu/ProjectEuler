@@ -1,0 +1,33 @@
+function smallestMult(n) {
+  // Good luck!
+
+  // Distribuer 1 à n dans un tableau
+  var numbers = [];
+  for (var i = 1; i <= n; i++) {
+    numbers.push(i);
+  }
+
+var gcd = function (a, b) {
+    return a ? gcd(b % a, a) : b;
+}
+
+var lcm = function (a, b) {
+    return a * b / gcd(a, b);
+}
+
+
+return numbers.reduce(lcm); // 
+
+}
+
+smallestMult(20);
+
+/* function gcd(a, b){
+  var t;
+  while (b != 0){
+        t == b; 
+        b == a % b; 
+        a == t; 
+    return a;
+  }
+} */
