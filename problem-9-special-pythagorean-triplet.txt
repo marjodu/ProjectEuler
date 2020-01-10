@@ -1,0 +1,18 @@
+function specialPythagoreanTriplet(n) {
+ let sumOfabc = n;
+ // Good luck!
+
+ for (let i = 1; i < n/3; i++){
+     for (let j = i+1; j < n/2; j++) {
+         var k = n - i - j;
+         if (i * i + j * j == k * k)  
+            { 
+                console.log(i * j * k); 
+                return i * j * k; 
+            } 
+     }
+ }
+ return true;
+}
+
+specialPythagoreanTriplet(1000);
